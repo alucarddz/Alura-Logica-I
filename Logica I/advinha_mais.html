@@ -1,0 +1,87 @@
+<meta charset="utf-8">
+
+
+<input/>
+<button>Advinhe um dos 4 números que pensei</button>
+
+<script>
+	
+	//função para me retornar um numero aleatorio
+	function sorteia(){
+		return Math.round(Math.random() * 10);
+	}
+
+	//essa função recebe a quantidade de numeros que eu quero sortear e no final me devolve essa lista com os números.
+	function sorteiaNumeros(quantidade) {
+
+		var numeros = []; //declarada uma lista vazia
+
+		var numero = 1; //variavel para saber quando parar de gerar numeros
+
+		while(numero <= quantidade) { //numero 1 é menor igual a 3? é, então se cria mais um número pra lista do array!
+
+			// FAÇA O PUSH APENAS SE NÃO TIVER ACHADO UM NÚMERO IGUAL DENTRO DA LISTA!
+
+			var numeroAleatorio = sorteia(); //essa variável recebe o resultado de sorteia
+			var achou = false;
+
+			if(numeroAleatorio !== 0) {
+
+				for(var posicao = 0; posicao < numeros.length; posicao++){ //verificar a lista e ver se o número gerado anteriormente já está lá! a verificação é feita pela variável achou, se achar = true se não achar = false....
+
+				if(numeros[posicao] == numeroAleatorio) { // Se o número nessa posição é igual ao número aleatório, então achou! ou seja, para de procurar.
+					achou = true;
+					break;
+
+				}
+			}
+
+				if(achou == false) { //se não há nenhum número igual a um já gerado, >> gerar um novo numero!
+
+				numeros.push(numeroAleatorio); //gera o numero! Que foi gerado utilizando a função sorteia, que está dentro da váriavel numeroAleatorio....
+				numero++; //aumenta 1, gerou um numero, aumenta um até que alcançe a quantidade declarada por mim!
+
+				}
+			}
+			
+		}
+
+		return numeros; //retorna a lista do array!
+
+	}
+
+	var numeros = sorteiaNumeros(4);
+	
+	console.log(numeros);
+
+	var input = document.querySelector("input");
+		input.focus();
+
+	function verifica() {
+
+		var achou = false;
+
+		for(var posicao = 0; posicao < numeros.length; posicao++) {
+
+			if(input.value == numeros[posicao]) {
+
+				alert("Parabéns, você acertou!");
+				achou = true;
+				break;
+
+			} 
+		}
+
+		if(achou == false){
+			alert("Você errou!");
+		}
+
+		input.value = "";
+		input.focus();		
+
+	}
+
+	var button = document.querySelector("button");
+	button.onclick = verifica;
+
+</script>

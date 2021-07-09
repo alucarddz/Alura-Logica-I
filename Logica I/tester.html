@@ -1,0 +1,46 @@
+<meta charset="utf-8">
+
+
+<script>
+
+	function pulaLinha() {
+
+		document.write("<br>");
+	}
+
+
+
+
+	function mostra(texto) {
+
+		document.write(texto);
+		pulaLinha();
+	}
+
+	function calculaImc(altura, peso) {
+
+		return peso / (altura * altura);
+	}
+
+	var pesoInformado = prompt("Por favor, informe seu pesor:")
+	var alturaInformada = prompt("Por favor informe sua alturar:")
+
+	var imc = Math.round(calculaImc(alturaInformada, pesoInformado));
+
+	mostra("O seu IMC é " + imc);
+
+	if(imc < 18.5) {
+		mostra("Você está abaixo da média, favor engordar!")
+	}
+
+	if(imc > 35) {
+		mostra("Você está acima da média, vai faze um exercicio!")
+	}
+
+	if(imc >= 18.5 && imc <= 35) {
+		
+		mostra("Você está na média.")
+	}
+
+
+</script>

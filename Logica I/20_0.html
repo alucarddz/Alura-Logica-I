@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+
+<script>
+	
+	function pulaLinha() {
+
+		document.write("<br>");
+	}
+
+	function mostra(texto) {
+
+		document.write(texto);
+		pulaLinha();
+	}
+
+	contador = 20;
+
+	while(contador >= 0) {
+		mostra("O contador está em " + contador);
+		contador = contador - 1;
+	}
+
+	mostra("FIM!");
+
+</script>
